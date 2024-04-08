@@ -68,7 +68,6 @@ Aby rozwiązać ten problem i zachować PersistentVolume po wygaśnięciu usług
 Utwórz PersistentVolumeClaim (PVC): Najpierw utwórz PersistentVolumeClaim, który będzie używany przez Deployment do żądania PersistentVolume. PVC powinien mieć stałą nazwę, aby można go było odnaleźć ponownie po wznowieniu usługi.
 Przykładowa definicja PVC w pliku persistent-volume-claim.yaml:
 
-yaml
 Copy code
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -86,7 +85,6 @@ Dodaj wolumin persistentVolumeClaim do definicji kontenera w Deployment, który 
 Upewnij się, że nazwa PersistentVolumeClaim w Deploymentzie odpowiada nazwie utworzonego PVC.
 Przykładowa definicja Deploymentu w pliku deployment.yaml:
 
-yaml
 Copy code
 apiVersion: apps/v1
 kind: Deployment
@@ -115,8 +113,8 @@ name: moj-wolumin
       claimName: moj-pvc
 Zastosuj PersistentVolumeClaim i Deployment:
 Zastosuj PVC i Deployment za pomocą polecenia kubectl apply.
-bash
-Copy code
+
+
 kubectl apply -f persistent-volume-claim.yaml
 kubectl apply -f deployment.yaml
 Dzięki takiemu podejściu, po wygaśnięciu usługi i ponownym uruchomieniu, Deployment będzie automatycznie żądał tego samego PersistentVolume poprzez utworzony PVC, a PersistentVolume zostanie podłączony do nowego poda. W ten sposób zachowamy dane w PersistentVolume, nawet po wygaśnięciu i wznowieniu usługi.
