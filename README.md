@@ -63,12 +63,12 @@ Po dyskusjach z działem biznesowym doszliśmy do wniosku, że część usług m
 
 **30pkt** za odpowiednie zmodyfikowanie i zdeployowanie "nie-usuwaj.yaml" demonstrując działanie teoretycznego rozwiązania na klastrze "potyczki"; +**5 pkt** za użycie provisionera storage z Zadania 2.
 --------------------------------------------------------------------------------------------------------------------------------------
-
 Aby rozwiązać ten problem i zachować PersistentVolume po wygaśnięciu usługi, możemy skorzystać z mechanizmu PersistentVolumeClaim oraz opcji woluminów persistentVolumeClaim. Oto jak możemy to zrobić:
 
 Utwórz PersistentVolumeClaim (PVC): Najpierw utwórz PersistentVolumeClaim, który będzie używany przez Deployment do żądania PersistentVolume. PVC powinien mieć stałą nazwę, aby można go było odnaleźć ponownie po wznowieniu usługi.
 Przykładowa definicja PVC w pliku persistent-volume-claim.yaml:
 
+yaml
 Copy code
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -86,6 +86,7 @@ Dodaj wolumin persistentVolumeClaim do definicji kontenera w Deployment, który 
 Upewnij się, że nazwa PersistentVolumeClaim w Deploymentzie odpowiada nazwie utworzonego PVC.
 Przykładowa definicja Deploymentu w pliku deployment.yaml:
 
+yaml
 Copy code
 apiVersion: apps/v1
 kind: Deployment
