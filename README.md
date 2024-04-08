@@ -230,4 +230,4 @@ env:
 Adrian chciał uruchomić aplikację "hello-world", ale nawet to mu nie działa. Znajdź przyczynę problemu i uruchom hello-world. **20 pkt**
 
  --------------------------------------------------------------------------------------------------------------------------------------
-nie wiem gdzie jest problem, gdyz w logach pods pokazuje ze image działa pomyślnie, myślałem nad "Deployment does not have minimum availability." lecz nie znalazłem odpowiedzi
+problem istnieje w wersji image hello-world, gdyz wersja z armem jest nieprawidłowe, rozwiązaniem problemu jest zmienienie jej na rancher/hello-world, nie zrobilismy tego gdyz nasz cluster samoistnie zaczal sie updatowac
